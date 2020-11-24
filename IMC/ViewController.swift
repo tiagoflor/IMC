@@ -25,6 +25,10 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true) //finaliza qualquer edicao que esta ocorrendo
+    } //vai ser executado toda vez que tocamos na tela
+    
 
     @IBAction func calculate(_ sender: UIButton) {
         if let weight = Double(tfWeight.text!) , let height = Double (tfHeight.text!) {
@@ -53,10 +57,11 @@ class ViewController: UIViewController {
                     result = "Obesidade"
                     image = "obesidade"
         }
-        lbResult.text = result // lbResult vai conter o mesmo texto que result
+        lbResult.text = "\((Int)(imc)): \(result)" // lbResult vai conter o mesmo texto que result converte resultado em INT
         ivResults.image = UIImage (named: image) // image view Result vai conter UIImage baseada image set
         viResult.isHidden = false //Minha vi result está escondida? false
         view.endEditing(true) //qualquer view finalizem sua edicao
+        
     }
 }
 
